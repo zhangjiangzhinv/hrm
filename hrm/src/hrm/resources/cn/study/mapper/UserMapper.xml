@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.study.mapper.UserMapper">
+    <select id="select_username" parameterType="string" resultType="User">
+        SELECT USERNAME,PASSWORD from t_user where USERNAME = #{username}
+    </select>
+    <!--id是sql语句的唯一名称，不能重复；parameterType是插入的参数名称；useGeneratedKeys指定是否使用数据库的自动增长策略-->
+    <insert id="save" parameterType="cn.study.domain.User" useGeneratedKeys="true">
+        INSERT INTO user_inf(username,password) VALUES (#{username},#{password})
+    </insert>
+</mapper>

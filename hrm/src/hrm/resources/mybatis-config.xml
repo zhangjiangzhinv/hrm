@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//MYBATIS.ORG//DTD CONFIG 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--指定mybatis所用日志的实现-->
+    <settings>
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+    <environments default="mysql">
+        <environment id="mysql">
+            <!--指定事务管理起类型，该处直接使用了JDBC的提交和回滚设置-->
+            <!--如果选择MANAGED则是让容器实现对事务的管理-->
+            <transactionManager type="JDBC"/>
+            <!--数据源的配置，POOLED是JDBC连接对象的数据源连接池的实现-->
+            <!--数据源的配置，JNDI是在web应用服务器中配置-->
+            <!--数据源的配置，UNPOOLED是每次请求时简单的打开和关闭-->
+            <dataSource type="JNDI" >
+                <property name="initial_context" value="java:comp/env" />
+                <property name="data_source" value="jdbc/mysql"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--mappers指定mybatis去何处寻找持久化类的映射文件-->
+    <mappers>
+        <mapper resource="cn/study/mapper/UserMapper.xml"></mapper>
+    </mappers>
+</configuration>
+

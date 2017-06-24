@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!--数据库驱动文件-->
+    <classPathEntry  location="/Users/jianghong/.m2/repository/mysql/mysql-connector-java/5.1.39/mysql-connector-java-5.1.39.jar"/>
+    <context id="mysqlgenerator" targetRuntime="MyBatis3">
+        <!--数据库基本信息-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=UTF-8"
+                        userId="root"
+                        password="root" />
+        <!--指定JavaBean生成的目录-->
+        <javaModelGenerator targetPackage="cn.study.domain" targetProject="src/main/java" />
+        <!--指定映射的xml文件所在的目录-->
+        <sqlMapGenerator targetPackage="cn.study.mapper" targetProject="src/main/java" />
+        <!--指定对应的Dao所在的目录-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="cn.study.dao" targetProject="src/main/java" />
+
+        <!--数据库中的目标数据表-->
+        <table tableName="t_user" domainObjectName="User"/>
+    </context>
+</generatorConfiguration>

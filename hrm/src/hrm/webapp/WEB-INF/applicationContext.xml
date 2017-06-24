@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jee="http://www.springframework.org/schema/jee"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd http://mybatis.org/schema/mybatis-spring">
+    <!--ContextLoaderListener创建一个根应用上下文，加载驱动应用后端的中间层和数据层组件-->
+
+    <!--配置JNDI数据源，需要Tomcat中的配置支持-->
+    <jee:jndi-lookup id="dataSource" jndi-name="jdbc/mysql" resource-ref="true"/>
+
+    <!--
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+    -->
+
+</beans>
