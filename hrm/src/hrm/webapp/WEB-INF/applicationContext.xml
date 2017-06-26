@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jee="http://www.springframework.org/schema/jee"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd http://mybatis.org/schema/mybatis-spring">
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/jee
+       http://www.springframework.org/schema/jee/spring-jee.xsd
+       http://mybatis.org/schema/mybatis-spring
+       http://mybatis.org/schema/mybatis-spring.xsd">
     <!--ContextLoaderListener创建一个根应用上下文，加载驱动应用后端的中间层和数据层组件-->
 
     <!--配置JNDI数据源，需要Tomcat中的配置支持-->
@@ -12,5 +19,12 @@
         <property name="dataSource" ref="dataSource"></property>
     </bean>
     -->
+
+    <!--在spring配置MyBatis工厂类，由spring管理MyBatis工厂类，可以将该工厂类注入到数据持久层获得操作数据库的session-->
+    <!--SqlSessionFactory是数据库编译后的内存镜像,每个应用对应一个SqlSessionFactory对象，该对象通过加载mybatis-config.xml生成-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"></property>
+        <property name="configLocation" value="classpath:mybatis-config.xml"></property>
+    </bean>
 
 </beans>
